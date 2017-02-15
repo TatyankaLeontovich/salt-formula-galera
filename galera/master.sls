@@ -47,8 +47,8 @@ galera_run_dir:
 
 {%- if grains.get('init', None) == "upstart" %}
 
-galera_purge_init:
-  file.absent:
+galera_check_init:
+  file.present:
   - name: /etc/init.d/mysql
   - require:
     - pkg: galera_packages
